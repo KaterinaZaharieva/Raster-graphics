@@ -36,7 +36,7 @@ void PGMImage::printPixels()
 	}
 }
 
-void PGMImage::saveAs(std::string)
+void PGMImage::saveAs(std::string fileName)
 {
 	std::ofstream file(fileName);
 	if (file.is_open()) {

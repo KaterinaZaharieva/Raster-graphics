@@ -151,13 +151,10 @@ void SessionManager::menu()
 		}
 		else if (command.find("save") != -1)
 		{
-			for (int i = 0; i < sessions[currentSessionID - 1].images.size(); i++)
-			{
 				for (int j = 0; j < sessions[currentSessionID - 1].commands.size(); j++)
 				{
 					modify(j);
 				}
-			}
 			for (int i = 0; i < sessions[currentSessionID - 1].images.size(); i++)
 			{
 				sessions[currentSessionID - 1].images[i]->saveAs(sessions[currentSessionID - 1].images[i]->getFileName());

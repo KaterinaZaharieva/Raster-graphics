@@ -36,7 +36,7 @@ void PBMImage::printPixels()
 	}
 }
 
-void PBMImage::saveAs(std::string)
+void PBMImage::saveAs(std::string fileName)
 {
 	std::ofstream file(fileName);
 	if (file.is_open()) {
@@ -45,11 +45,13 @@ void PBMImage::saveAs(std::string)
 		file << this->row << std::endl;
 		file << this->col << std::endl;
 
-		for (int i = 0; i < row*col; i++)
+		for (int i = 0; i < row; i++)
 		{
-			file << pixels[i] << " ";
-			if(i != 0 && i % (row - 1)  == 0)
-				file << std::endl;
+			for (int j = 0; j < col; j++)
+			{
+				file << pixels[i * row + j] << " ";
+			}
+			file << std::endl;
 		}
 		file.close();
 	}
@@ -69,7 +71,7 @@ void PBMImage::negative()
 {
 		for (int i = 0; i < this->pixels.size(); i++)
 		{
-			int grayShade = this->maxValue - pixels[i];
+			int grayShade = 1 - pixels[i];
 			pixels[i] = grayShade;
 		}
 }
